@@ -1,8 +1,7 @@
 package cn.edu.bjtu.weibo.service.serviceImpl;
 
-import java.util.*;
-
 import cn.edu.bjtu.weibo.service.WeiboListService;
+import java.util.*;
 import cn.edu.bjtu.weibo.model.Weibo;
 import cn.edu.bjtu.weibo.dao.UserDAO;
 import cn.edu.bjtu.weibo.dao.daoImpl.UserDAOImpl;
@@ -95,15 +94,15 @@ public class WeiboListServiceImpl implements WeiboListService {
 		int secondIdFollowerNumber;
 		
 		for(Iterator<String>  it=userIdList.iterator();it.hasNext();){
-                   secondId=it.next();
-		   firstIdFollowerNumber=Integer.parseInt(usedao.getFollowerNumber(firstId));
-		   secondIdFollowerNumber=Integer.parseInt(usedao.getFollowerNumber(secondId));
+           secondId=it.next();
+		   firstIdFollowerNumber=Integer.parseInt(userdao.getFollowerNumber(firstId));
+		   secondIdFollowerNumber=Integer.parseInt(userdao.getFollowerNumber(secondId));
 		   if(secondIdFollowerNumber>=firstIdFollowerNumber){
 			   firstId=secondId;
 		   }
         }
 	 	
-		return getWeiboList(firstId,pageIndex,numberPerPage);
+		return getWeiboList(firstId,Integer.parseInt(pageIndex),numberPerPage);
 		
 	}
 }
