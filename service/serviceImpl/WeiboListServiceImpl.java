@@ -1,7 +1,8 @@
 package cn.edu.bjtu.weibo.service.serviceImpl;
 
-import java.util.List;
+import java.util.*;
 
+import cn.edu.bjtu.weibo.service.WeiboListService;
 import cn.edu.bjtu.weibo.model.Weibo;
 import cn.edu.bjtu.weibo.dao.UserDAO;
 import cn.edu.bjtu.weibo.dao.daoImpl.UserDAOImpl;
@@ -26,7 +27,7 @@ public class WeiboListServiceImpl implements WeiboListService {
 	 * @param numberPerPage : for example, 20 or 30 weibos for each page.
 	 * @return
 	 */
-	List<Weibo> getWeiboList(String userId, int pageIndex, int numberPerPage){
+	public List<Weibo> getWeiboList(String userId, int pageIndex, int numberPerPage){
 		/**
 		String content;
 		int like;
@@ -46,7 +47,7 @@ public class WeiboListServiceImpl implements WeiboListService {
 		WeiboDAO weibodao=new WeiboDAOImpl();
 		
 		//获得微博ID
-		List<String> WeiboString=userdao.getWeibo(userId,pageIndex,pagePerNumber);
+		List<String> WeiboString=userdao.getWeibo(userId,pageIndex,numberPerPage);
 		//创建Weibo对象，加入微博列表
 		 for(Iterator<String>  it=WeiboString.iterator();it.hasNext();){
             WeiboID=it.next();
@@ -60,7 +61,7 @@ public class WeiboListServiceImpl implements WeiboListService {
 			
 			weibo.setAtUserIdList(weibodao.getAtUserList(WeiboID));
 			weibo.setTopicIdList(weibodao.getTopicList(WeiboID));
-			weibo.setForwardNumber( weibodao.getForwardNumber(WeiboID));
+			weibo.setForwardNumber( Integer.parseInt(weibodao.getForwardNumber(WeiboID)));
 			
 			weibolist.add(weibo);
         }
@@ -80,7 +81,7 @@ public class WeiboListServiceImpl implements WeiboListService {
 	 如果要是返回最热的微博是可行的，最热微博，找到粉丝人数最多的，
 	 或者就像微博那样，热门
 	 */
-	List<Weibo> getWeiboList(String pageIndex, int numberPerPage){
+	public List<Weibo> getWeiboList(String pageIndex, int numberPerPage){
 		String WeiboID;
 		Weibo weibo;
 		List<Weibo> weibolist=new ArrayList<Weibo>();
