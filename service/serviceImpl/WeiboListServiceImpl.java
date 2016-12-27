@@ -67,7 +67,7 @@ public class WeiboListServiceImpl implements WeiboListService {
         }
 		//返回微博列表
 		return weibolist;
-	};
+	}
 	
 	/**
 	 * When a userId is not specified, it will return the random list of weibos
@@ -89,13 +89,13 @@ public class WeiboListServiceImpl implements WeiboListService {
 		List<String> userIdList;
 		
 	    userIdList=userdao.getUserId();
-		String firtId=userIdList.get(0);
+		String firstId=userIdList.get(0);
 		String secondId;
 		int firstIdFollowerNumber;
 		int secondIdFollowerNumber;
 		
 		for(Iterator<String>  it=userIdList.iterator();it.hasNext();){
-           secondId=it.next();
+                   secondId=it.next();
 		   firstIdFollowerNumber=Integer.parseInt(usedao.getFollowerNumber(firstId));
 		   secondIdFollowerNumber=Integer.parseInt(usedao.getFollowerNumber(secondId));
 		   if(secondIdFollowerNumber>=firstIdFollowerNumber){
@@ -105,5 +105,5 @@ public class WeiboListServiceImpl implements WeiboListService {
 	 	
 		return getWeiboList(firstId,pageIndex,numberPerPage);
 		
-	};
+	}
 }
