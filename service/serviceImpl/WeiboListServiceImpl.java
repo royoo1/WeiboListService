@@ -1,14 +1,13 @@
-package cn.edu.bjtu.weibo.service;
+package cn.edu.bjtu.weibo.service.serviceImpl;
 
 import java.util.List;
 
 import cn.edu.bjtu.weibo.model.Weibo;
 import cn.edu.bjtu.weibo.dao.UserDAO;
-import cn.edu.bjtu.weibo.dao.UserDAOImpl;
+import cn.edu.bjtu.weibo.dao.daoImpl.UserDAOImpl;
 import cn.edu.bjtu.weibo.dao.WeiboDAO;
-import cn.edu.bjtu.weibo.dao.WeiboDAOImpl;
-import cn.edu.bjtu.weibo.service.RecommendWeiboService;
-import cn.edu.bjtu.weibo.service.RecommendWeiboServiceImpl;
+import cn.edu.bjtu.weibo.dao.daoImpl.WeiboDAOImpl;
+
 
 
 /**
