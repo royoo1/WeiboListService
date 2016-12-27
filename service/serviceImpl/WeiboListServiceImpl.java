@@ -27,16 +27,6 @@ public class WeiboListServiceImpl implements WeiboListService {
 	 * @return
 	 */
 	public List<Weibo> getWeiboList(String userId, int pageIndex, int numberPerPage){
-		/**
-		String content;
-		int like;
-	    String date;
-	    int commentNumber;
-        String userId;
-		List<String> atUserIdList;
-        List<String> topicIdList;
-		int forwardNumber;
-		**/
 		
 		String WeiboID;
 		Weibo weibo;
@@ -45,9 +35,9 @@ public class WeiboListServiceImpl implements WeiboListService {
 		UserDAO userdao=new UserDAOImpl();
 		WeiboDAO weibodao=new WeiboDAOImpl();
 		
-		//获得微博ID
+		
 		List<String> WeiboString=userdao.getWeibo(userId,pageIndex,numberPerPage);
-		//创建Weibo对象，加入微博列表
+		
 		 for(Iterator<String>  it=WeiboString.iterator();it.hasNext();){
             WeiboID=it.next();
 			weibo=new Weibo();
@@ -64,7 +54,7 @@ public class WeiboListServiceImpl implements WeiboListService {
 			
 			weibolist.add(weibo);
         }
-		//返回微博列表
+		
 		return weibolist;
 	}
 	
@@ -77,8 +67,6 @@ public class WeiboListServiceImpl implements WeiboListService {
 	 * @param pageIndex : start from 0 which means the first page.
 	 * @param numberPerPage : for example, 20 or 30 weibos for each page.
 	 * @return
-	 如果要是返回最热的微博是可行的，最热微博，找到粉丝人数最多的，
-	 或者就像微博那样，热门
 	 */
 	public List<Weibo> getWeiboList(String pageIndex, int numberPerPage){
 		String WeiboID;
